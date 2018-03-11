@@ -8,9 +8,12 @@
 #include <stdio.h>
 #include <time.h>
 #include <iostream>
+#include <math.h>
 
 #define ROWS 40
 #define COLUMNS 40
+
+#define PI 3.1415926535897932384626433832795
 
 int direction = 2;
 int length = 0;
@@ -31,8 +34,8 @@ void squereGrid(int x, int y){
     glEnd();
 }
 void drawGrid(){
-    for(int x=0;x<gridX;x++){
-        for(int y=0;y<gridY;y++){
+    for(int x=0;x<ROWS;x++){
+        for(int y=0;y<COLUMNS;y++){
             squereGrid(x,y);
         }
     }
@@ -133,7 +136,7 @@ void moveSnake(int dir){
         grid[snake[0][0]][snake[0][1]] = 1;
     }
     changedir = true;
-    printGrid();
+    //printGrid();
     if((snake[0][0] < 0 || snake[0][0] > (COLUMNS-1) || snake[0][1] < 0 || snake[0][1] > (ROWS-1)) || gameover){
         gameover = true;
     }else{
@@ -149,11 +152,16 @@ void drawSnake(){
 
 void drawFood(){
     glColor3f(1.0, 1.0, 0.0);
-    glBegin(GL_TRIANGLES);
+    double radius = 0.4;
+    glBegin(GL_POLYGON);
+        for(double i = 0; i < 2 * PI; i += PI / 4)
+ 					glVertex3f(0.48+food[0]+cos(i) * radius, 0.48+food[1]+ sin(i) * radius, 0.0);
+    glEnd();
+    /*glBegin(GL_TRIANGLES);
         glVertex2d(food[0], food[1]);
         glVertex2d(food[0]+0.9, food[1]);
         glVertex2d(food[0]+0.45, food[1]+0.9);
-    glEnd();
+    glEnd();*/
 }
 
 void spawnFood(){
@@ -282,7 +290,6 @@ int main(int argc, char *argv[]){
     glClearColor(0,0,0,1);
     glCullFace(GL_BACK);
 
-    initGrid(ROWS, COLUMNS);
     srand (time(NULL));
     initSnake();
 

@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1519498336 source:d:\c_c++-projects\snake\main.cpp
+1520788697 source:d:\c_c++-projects\snake\main.cpp
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<stdlib.h>
 	<stdio.h>
 	<time.h>
 	<iostream>
+	<math.h>
 
 1426346128 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
 	"freeglut_std.h"
@@ -244,4 +245,7 @@
 1341006776 c:\program files (x86)\codeblocks\mingw\include\time.h
 	<_mingw.h>
 	<stddef.h>
+
+1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
+	<_mingw.h>
 
